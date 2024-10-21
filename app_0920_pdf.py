@@ -30,7 +30,7 @@ if not api_key:
 client = OpenAI(api_key=api_key)
 
 # 初始化 tiktoken 編碼器
-encoding = tiktoken.encoding_for_model("gpt-4o")
+encoding = tiktoken.encoding_for_model("gpt-4o-mini")
 
 # 初始化 SentenceTransformer 模型（使用多語言模型）
 try:
@@ -299,8 +299,8 @@ def generate_response(query):
 
 # Streamlit 應用
 def main():
-    st.title("進階 RAG 增強客戶服務助理")
-    st.write("請詢問任何與我們服務相關的問題，或輸入「生成報告」以查看分析結果！")
+    st.title("太能系統股份有限公司客戶服務助理")
+    st.write("請詢問任何與我們服務相關的問題！")
 
     # 初始化聊天歷史
     if 'chat_history' not in st.session_state:
