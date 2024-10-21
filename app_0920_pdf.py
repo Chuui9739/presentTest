@@ -277,7 +277,7 @@ def generate_response(query):
         response = client.chat.completions.create(
             model="gpt-4o-mini",  # 使用 GPT-4o-mini 模型
             messages=messages,
-            max_tokens=2000,  # 限制回應的長度
+            max_tokens=10000,  # 限制回應的長度
             n=1,
             stop=None,
             temperature=0.7,
