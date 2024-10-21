@@ -270,8 +270,8 @@ def generate_response(query):
         context_text = "\n".join(relevant_context)
 
         messages = [
-            {"role": "system", "content": "你是一位專業的客戶服務助理，專門回答關於綠能以及智慧交通的問題。請仔細閱讀提供的上下文，並使用這些信息來回答用戶的問題。如果上下文中沒有直接相關的信息，請基於你的專業知識提供最相關的回答，但要明確指出這可能不是來自官方資料。"},
-            {"role": "user", "content": f"基於以下信息回答問題：\n\n上下文：{context_text}\n\n問題：{query}"}
+            {"role": "system", "content": "你是一位專業的客戶服務助理，專門回答關於綠能以及智慧交通的問題。請仔細閱讀提供的資訊，並使用這些訊息來回答客戶的問題。如果上下文中沒有直接相關的信息，請基於你的專業知識提供最相關的回答，但要明確指出這不是來自太能系統的官方資料。"},
+            {"role": "user", "content": f"基於以下資訊回答問題：\n\n資訊：{context_text}\n\n問題：{query}"}
         ]
 
         response = client.chat.completions.create(
