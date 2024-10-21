@@ -270,14 +270,14 @@ def generate_response(query):
         context_text = "\n".join(relevant_context)
 
         messages = [
-            {"role": "system", "content": "你是一位專業的客戶服務助理，專門回答關於食品營養成分的問題。請仔細閱讀提供的上下文，並使用這些信息來回答用戶的問題。如果上下文中沒有直接相關的信息，請基於你的專業知識提供最相關的回答，但要明確指出這可能不是來自官方資料。"},
+            {"role": "system", "content": "你是一位專業的客戶服務助理，專門回答關於綠能以及智慧交通的問題。請仔細閱讀提供的上下文，並使用這些信息來回答用戶的問題。如果上下文中沒有直接相關的信息，請基於你的專業知識提供最相關的回答，但要明確指出這可能不是來自官方資料。"},
             {"role": "user", "content": f"基於以下信息回答問題：\n\n上下文：{context_text}\n\n問題：{query}"}
         ]
 
         response = client.chat.completions.create(
-            model="gpt-4o",  # 使用 GPT-4 模型
+            model="gpt-4o-mini",  # 使用 GPT-4o-mini 模型
             messages=messages,
-            max_tokens=500,  # 限制回應的長度
+            max_tokens=2000,  # 限制回應的長度
             n=1,
             stop=None,
             temperature=0.7,
@@ -288,7 +288,7 @@ def generate_response(query):
         end_time = datetime.datetime.now()
         response_time = (end_time - start_time).total_seconds()
 
-        topic = "食品營養"  # 根據實際情況調整
+        topic = "智慧交通及綠能"  # 根據實際情況調整
 
         analytics_system.log_interaction(query, response_time, topic)
 
@@ -299,7 +299,7 @@ def generate_response(query):
 
 # Streamlit 應用
 def main():
-    st.title("太能系統股份有限公司客戶服務助理")
+    st.title("太能系統客戶服務助理")
     st.write("請詢問任何與我們服務相關的問題！")
 
     # 初始化聊天歷史
